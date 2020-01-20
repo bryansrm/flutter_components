@@ -36,11 +36,17 @@ class HomePageTemp extends StatelessWidget {
 
     return options.map( (item) => Column(
       children: <Widget>[
-        ListTile(title: Text( item + '!')),
+        ListTile(
+          title: Text( item + '!'),
+          subtitle: Text('Subtitulo'),
+          leading: Icon( Icons.account_circle ),
+          trailing: Icon( Icons.keyboard_arrow_right ),
+          onTap: (){},
+        ),
         Divider()
       ],
     ) ).toList();
-    
+
   }
 
 }
