@@ -9,7 +9,13 @@ class AlertPage extends StatelessWidget {
         title: Text('Alert Page'),
       ),
       body: Center(
-        child: Text('Alert Page'),
+        child: RaisedButton(
+          child: Text('Mostrar alerta'),
+          color: Colors.blue,
+          textColor: Colors.white,
+          shape: StadiumBorder(),
+          onPressed: (){},
+        )
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon( Icons.arrow_back),
