@@ -10,6 +10,9 @@ class _InputPageState extends State<InputPage> {
   String _nombre = '';
   String _email = '';
   String _fecha = '';
+  String _opcionSeleccionada = 'Volar';
+
+  List<String> _poderes = ['Volar', 'Super fuerza', 'Rayos X'];
 
   TextEditingController _inputFileDateController = new TextEditingController();
 
@@ -29,6 +32,8 @@ class _InputPageState extends State<InputPage> {
           _crearPassword(),
           Divider(),
           _crearFecha(context),
+          Divider(),
+          _crearDropDown(),
           Divider(),
           _crearPersona(),
         ],
@@ -65,6 +70,7 @@ class _InputPageState extends State<InputPage> {
     return ListTile(
       title: Text('Nombre es : $_nombre'),
       subtitle: Text('Email es : $_email'),
+      trailing: Text(_opcionSeleccionada),
     );
 
   }
@@ -131,6 +137,45 @@ class _InputPageState extends State<InputPage> {
         FocusScope.of(context).requestFocus( new FocusNode() );
         _selectDate( context );
       },
+    );
+
+  }
+
+  List<DropdownMenuItem<String>> getOpcionesDropDown (){
+
+    List<DropdownMenuItem<String>> lista = List();
+
+    _poderes.forEach( (poder){
+
+      lista.add(DropdownMenuItem(
+        child: Text( poder ),
+        value: poder,
+      ));
+
+    });
+
+    return lista;
+
+  }
+
+  Widget _crearDropDown() {
+
+    return Row(
+      children: <Widget>[
+        Icon( Icons.select_all ),
+        SizedBox(width: 30.0),
+         DropdownButton(
+          value: _opcionSeleccionada,
+          items: getOpcionesDropDown(),
+          onChanged: (opt){
+            
+            setState(() {
+              _opcionSeleccionada = opt;
+            });
+
+          },
+        )
+      ],
     );
 
   }
